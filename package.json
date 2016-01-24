@@ -1,7 +1,7 @@
 {
   "name": "promisor",
-  "version": "0.1.1",
-  "description": "",
+  "version": "0.1.2",
+  "description": "Advanced functionality for Promise",
   "main": "bin/promisor.js",
   "author": {
     "name": "superpaintman",
@@ -14,7 +14,21 @@
     "test": "npm run build && mocha ./bin/test",
     "prepublish": "npm run build && npm run test"
   },
-  "keywords": [],
+  "keywords": [
+    "fluent interface",
+    "dsl",
+    "flow control",
+    "future",
+    "deferreds",
+    "deferred",
+    "await",
+    "async",
+    "promises-aplus",
+    "promises-a",
+    "promises",
+    "performance",
+    "promise"
+  ],
   "files": [
     "development",
     "bin",

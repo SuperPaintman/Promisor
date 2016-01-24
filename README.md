@@ -1,8 +1,90 @@
 # Promisor
+Advanced functionality for Promise
 
 ## Installation
 ```sh
 npm install promisor --save
+```
+
+--------------------------------------------------------------------------------
+
+## API
+### Promisor\#delay
+Returns a promise that will be resolved with value (or undefined) after given ms milliseconds.
+
+**Arguments**
+* **ms** {`Integer`}
+* [**value**=*undefined*] {`Any`}
+
+**Returns**
+* {`Promise`} returns second argument - *value*
+
+**Example**
+
+```js
+// Without value
+Promisor.delay(500)
+    .then(()=> {
+        console.log("passed 500 milliseconds!");
+    });
+
+// And with
+Promisor.delay(500, 42)
+    .then((result)=> {
+        console.log(`after 500 milliseconds returns "${result}"`);
+    });
+```
+
+### Promisor\#allSeries
+This same as `Promise#all` but runs only a portions async promises at a time.
+
+**Arguments**
+* **values** {`Functin[] -> Promise`}      - array of functions that return *promise*
+* [**limit**=*1*] {`Integer`}   - limit of one run
+* [**delay**=*0*] {`delay`}     - delay before running the next series
+
+**Returns**
+* {`Promise`} returns results of all promises
+
+**Example**
+
+```js
+const promises = [
+    function () { return Promisor.delay(100); },
+    function () { return Promisor.delay(100); },
+    function () { return Promisor.delay(100); },
+    function () { return Promisor.delay(100); },
+    function () { return Promisor.delay(100); },
+    function () { return Promisor.delay(100); }
+]
+
+Promisor.allSeries(promises, 1) // By 1
+    .then(() => {
+        /**
+         * 100 -> 100 -> 100 -> 100 -> 100 -> 100 = 600ms
+         */
+        
+        console.log("passed 600 milliseconds!");
+    });
+
+// Or by 3
+const promises = [
+    function () { return Promisor.delay(100); },
+    function () { return Promisor.delay(100); },
+    function () { return Promisor.delay(100); },
+    function () { return Promisor.delay(100); },
+    function () { return Promisor.delay(100); },
+    function () { return Promisor.delay(100); }
+]
+
+Promisor.allSeries(promises, 3) // By 3
+    .then(() => {
+        /**
+         * 100 and 100 and 100 -> 100 and 100 and 100 = 200ms
+         */
+        
+        console.log("passed 200 milliseconds!");
+    });
 ```
 
 --------------------------------------------------------------------------------

@@ -107,9 +107,7 @@ describe("#allSeries", () => {
             for (let i = 0, len = 9; i < len; i++) {
                 (function(promises, i) {
                     promises.push(function() {
-                        return Promisor.delay(300).then(() => {
-                            return i;
-                        });
+                        return Promisor.delay(300, i);
                     });
                 })(promises, i);
             }
@@ -143,9 +141,7 @@ describe("#allSeries", () => {
                          * 700 | 800 | 900 | max> 900  |
                          */
 
-                        return Promisor.delay(100 * (i + 1)).then(() => {
-                            return i;
-                        });
+                        return Promisor.delay(100 * (i + 1), i);
                     });
                 })(promises, i);
             }
@@ -179,9 +175,7 @@ describe("#allSeries", () => {
                          * 700 | 800 | 900 | max> 900  |
                          */
 
-                        return Promisor.delay(100 * (i + 1)).then(() => {
-                            return i;
-                        });
+                        return Promisor.delay(100 * (i + 1), i);
                     });
                 })(promises, i);
             }
@@ -211,9 +205,7 @@ describe("#allSeries", () => {
             for (let i = 0, len = 9; i < len; i++) {
                 (function(promises, i) {
                     promises.push(function() {
-                        return new Promisor().delay(300).then(() => {
-                            return i;
-                        });
+                        return new Promisor().delay(300, i);
                     });
                 })(promises, i);
             }
@@ -247,9 +239,7 @@ describe("#allSeries", () => {
                          * 700 | 800 | 900 | max> 900  |
                          */
 
-                        return new Promisor().delay(100 * (i + 1)).then(() => {
-                            return i;
-                        });
+                        return new Promisor().delay(100 * (i + 1), i);
                     });
                 })(promises, i);
             }
@@ -283,9 +273,7 @@ describe("#allSeries", () => {
                          * 700 | 800 | 900 | max> 900  |
                          */
 
-                        return new Promisor().delay(100 * (i + 1)).then(() => {
-                            return i;
-                        });
+                        return new Promisor().delay(100 * (i + 1), i);
                     });
                 })(promises, i);
             }
