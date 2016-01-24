@@ -4,7 +4,6 @@
 import _ = require("lodash");
 
 let Promise;
-
 if (global.Promise) {
     // Native
     Promise = global.Promise;
