@@ -11,8 +11,7 @@
   "scripts": {
     "start": "tsc -w -p ./",
     "build": "tsc -p ./",
-    "test": "mocha ./bin/test",
-    "prepublish": "npm run build && npm run test"
+    "test": "mocha ./bin/test"
   },
   "keywords": [
     "fluent interface",

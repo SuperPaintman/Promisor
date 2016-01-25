@@ -10,7 +10,6 @@ before_install:
   - "npm install -g tsd"
 #  - "tsd reinstall --save"
 #  - "npm run-script build"
-  - "npm install --ignore-scripts"
-install: off
+  - "npm install"
 script:
   - "npm run test"
