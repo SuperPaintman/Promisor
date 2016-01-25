@@ -11,7 +11,7 @@ install:
   - "npm install -g typescript"
   - "npm install -g tsd"
   - "tsd reinstall --save"
-  - "npm run build"
+  - "npm run-script build"
 build: off
 test_script:
   - "npm run test"

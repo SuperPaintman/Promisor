@@ -4,10 +4,10 @@ node_js:
   - "4"
   - "5"
   - "iojs"
-script: "npm run test"
 before_install:
   - "npm install -g mocha"
   - "npm install -g typescript"
   - "npm install -g tsd"
   - "tsd reinstall --save"
-  - "npm run build"
+  - "npm run-script build"
+script: "npm run test"
