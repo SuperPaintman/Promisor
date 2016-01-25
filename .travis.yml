@@ -5,7 +5,9 @@ node_js:
   - "5"
   - "iojs"
 script: "npm run test"
-install:
-  - "npm install typescript"
+before_install:
+  - "npm install -g typescript"
+  - "npm install -g tsd"
   - "npm install"
+  - "tsd reinstall --save"
   - "npm run build"

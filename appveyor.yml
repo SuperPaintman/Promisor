@@ -7,8 +7,10 @@ environment:
     - nodejs_version: "4.2"
     - nodejs_version: "5.5"
 install:
-  - "npm install typescript"
+  - "npm install -g typescript"
+  - "npm install -g tsd"
   - "npm install"
+  - "tsd reinstall --save"
   - "npm run build"
 build: on
 test_script:
