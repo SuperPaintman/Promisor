@@ -10,10 +10,9 @@ install:
   - "npm install -g mocha"
   - "npm install -g typescript"
   - "npm install -g tsd"
-  - "npm install"
   - "tsd reinstall --save"
   - "npm run build"
-build: on
+build: off
 test_script:
   - "npm run test"
 version: "{build}"
