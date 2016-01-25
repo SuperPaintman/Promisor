@@ -1,4 +1,10 @@
 # Promisor
+
+[![Build Status via Travis CI][travis-image]][travis-url]
+[![NPM version][npm-v-image]][npm-link]
+[![NPM Downloads][npm-dm-image]][npm-link]
+
+
 Advanced functionality for Promise
 
 ## Installation
@@ -97,3 +103,9 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[npm-link]: https://www.npmjs.com/package/promisor
+[npm-v-image]: https://img.shields.io/npm/v/promisor.svg?style=plastic
+[npm-dm-image]: https://img.shields.io/npm/dm/Promisor.svg
+[travis-image]: https://travis-ci.org/SuperPaintman/Promisor.svg?branch=master
+[travis-url]: https://travis-ci.org/SuperPaintman/Promisor
