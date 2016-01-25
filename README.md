@@ -1,6 +1,7 @@
 # Promisor
 
-[![Build Status via Travis CI][travis-image]][travis-url]
+[![Linux Build][travis-image]][travis-url]
+[![Windows Build][appveyor-image]][appveyor-url]
 [![NPM version][npm-v-image]][npm-link]
 [![NPM Downloads][npm-dm-image]][npm-link]
 
@@ -107,5 +108,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [npm-link]: https://www.npmjs.com/package/promisor
 [npm-v-image]: https://img.shields.io/npm/v/promisor.svg
 [npm-dm-image]: https://img.shields.io/npm/dm/Promisor.svg
-[travis-image]: https://travis-ci.org/SuperPaintman/Promisor.svg?branch=master
+[travis-image]: https://img.shields.io/travis/SuperPaintman/Promisor/master.svg?label=linux
 [travis-url]: https://travis-ci.org/SuperPaintman/Promisor
+[appveyor-image]: https://img.shields.io/appveyor/ci/SuperPaintman/Promisor/master.svg?label=windows
+[appveyor-url]: https://ci.appveyor.com/project/SuperPaintman/Promisor
