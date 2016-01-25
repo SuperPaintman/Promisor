@@ -1,7 +1,7 @@
 'use strict';
 /// <reference path="typings/tds.d.ts"/>
 var assert = require('assert');
-var Promisor = require("../Promisor");
+var Promisor = require("../promisor");
 // const Promise = global.Promise;
 /**
  * Helps

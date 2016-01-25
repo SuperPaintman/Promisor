@@ -4,7 +4,7 @@
 import assert = require('assert');
 import _ = require("lodash");
 
-import Promisor = require("../Promisor");
+import Promisor = require("../promisor");
 
 // const Promise = global.Promise;
 /**
