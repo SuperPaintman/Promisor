@@ -9,13 +9,7 @@ environment:
 install:
   - "npm install -g mocha"
   - "npm install -g typescript"
-  - "tsc --version"
-  - "npm update -g typescript"
-  - "tsc --version"
   - "npm install -g tsd"
-  - "tsd --version"
-  - "npm update -g tsd"
-  - "tsd --version"
   - "tsd reinstall --save"
   - "npm run build"
 build: off

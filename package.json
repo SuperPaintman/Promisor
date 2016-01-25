@@ -9,8 +9,8 @@
     "url": "http://flatdev.ru/"
   },
   "scripts": {
-    "start": "tsc -w -p ./",
-    "build": "tsc -p ./",
+    "start": "tsc -w --project ./",
+    "build": "tsc --project ./",
     "test": "mocha ./bin/test",
     "prepublish": "npm run build && npm run test"
   },
