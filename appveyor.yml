@@ -7,6 +7,7 @@ environment:
     - nodejs_version: "4.2"
     - nodejs_version: "5.5"
 install:
+  - "npm install -g mocha"
   - "npm install -g typescript"
   - "npm install -g tsd"
   - "npm install"

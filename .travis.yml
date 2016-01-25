@@ -6,6 +6,7 @@ node_js:
   - "iojs"
 script: "npm run test"
 before_install:
+  - "npm install -g mocha"
   - "npm install -g typescript"
   - "npm install -g tsd"
   - "npm install"
