@@ -5,9 +5,12 @@ node_js:
   - "5"
   - "iojs"
 before_install:
+  - "npm install -g npm"
+  - "npm --version"
   - "npm install -g mocha"
   - "npm install -g typescript"
   - "npm install -g tsd"
+  - "ls"
 #  - "tsd reinstall --save"
 #  - "npm run-script build"
   - "npm install"
