@@ -3,6 +3,7 @@
 
 import _ = require("lodash");
 import Promise = require("bluebird");
+import async = require("async");
 
 /**
  * allSeries
@@ -12,54 +13,38 @@ import Promise = require("bluebird");
  * @return {Promise}
  */
 function _allSeries(values: Function[], limit = 1, delay = 0): Promise<any> {
-    let all = [];
-
     // Делим функции на чанки
     const chunks: Function[][] = _.chunk<Function>(values, limit);
 
-    // Заводим промис
-    let p: Promise<any>;
-    p = Promise.resolve();
+    return new Promise((resolve, reject) => {
+        async.mapSeries(chunks, (chunk: Function[], callback: Function) => {
+            // Сбор промисов
+            const promises: Promise<any>[] = [];
 
-    // Обход всех чанков
-    _.forEach(chunks, (chunk: Function[]) => {
-        p = p
-            .then(() => {
-                const promises: Promise<any>[] = [];
-
-                _.forEach(chunk, (fn: Function) => {
-                    promises.push(fn());
-                });
-
-                return Promise.all(promises);
-            })
-            // Задержка между сериями
-            .then((results: any[]) => {
-                return delay > 0 ?
-                    Promise.delay(delay, results) : Promise.resolve(results);
-            })
-            .then((results: any[]) => {
-                all.push(results);
-
-                return Promise.resolve();
+            _.forEach(chunk, (fn: Function) => {
+                promises.push(fn());
             });
+
+            // Запуск всех
+            Promise.all(promises)
+                .delay(delay)
+                .then((results) => {
+                    callback(null, results);
+                }, (err) => {
+                    callback(err);
+                });
+        }, (err, results) => {
+            if (err) { return reject(err); }
+
+            let all = [];
+            all = _(results)
+                .flatten()
+                .flatten()
+                .value();
+
+            resolve(all);
+        });
     });
-
-    p = p.then(() => {
-
-        /**
-         * На момент окончания, резуьтат будет иметь вид:
-         * [][]
-         */
-        all = _(all)
-            .flatten()
-            .flatten()
-            .value();
-
-        return Promise.resolve(all);
-    });
-
-    return p;
 }
 
 class Promisor {
