@@ -6,3 +6,6 @@ typings/
 
 # Coverage
 coverage/
+
+# Log
+npm-debug.log

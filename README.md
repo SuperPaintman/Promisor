@@ -97,6 +97,20 @@ Promisor.allSeries(promises, 3) // By 3
 
 --------------------------------------------------------------------------------
 
+## Changelog
+### 0.2.0 [`Unstable`]
+```diff
++ Added: dependence on BlueBird
+- Removed: delay method
+```
+
+### 0.1.0 [`Unstable`]
+```diff
++ First realise
+```
+
+--------------------------------------------------------------------------------
+
 ## License
 Copyright (c)  2016 [Alexander Krivoshhekov](http://github.com/SuperPaintman)
 

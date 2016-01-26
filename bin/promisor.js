@@ -1,28 +1,7 @@
 'use strict';
 /// <reference path="typings/tds.d.ts"/>
 var _ = require("lodash");
-var Promise;
-if (global.Promise) {
-    // Native
-    Promise = global.Promise;
-}
-else {
-    // Bluebird
-    Promise = require("bluebird");
-}
-/**
- * Delay
- * @param  {number}        ms
- *
- * @return {Promise}
- */
-function _delay(ms, value) {
-    return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-            resolve(value);
-        }, ms);
-    });
-}
+var Promise = require("bluebird");
 /**
  * allSeries
  * @param  {Function[]}       values
@@ -51,7 +30,7 @@ function _allSeries(values, limit, delay) {
         })
             .then(function (results) {
             return delay > 0 ?
-                _delay(delay, results) : Promise.resolve(results);
+                Promise.delay(delay, results) : Promise.resolve(results);
         })
             .then(function (results) {
             all.push(results);
@@ -73,10 +52,8 @@ function _allSeries(values, limit, delay) {
 }
 var Promisor = (function () {
     function Promisor() {
-        this.delay = _delay;
         this.allSeries = _allSeries;
     }
-    Promisor.delay = _delay;
     Promisor.allSeries = _allSeries;
     return Promisor;
 })();

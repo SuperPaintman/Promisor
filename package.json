@@ -1,6 +1,6 @@
 {
   "name": "promisor",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Advanced functionality for Promise",
   "main": "bin/promisor.js",
   "author": {
