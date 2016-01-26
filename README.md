@@ -4,6 +4,7 @@
 [![Windows Build][appveyor-image]][appveyor-url]
 [![NPM version][npm-v-image]][npm-link]
 [![NPM Downloads][npm-dm-image]][npm-link]
+[![Test Coverage][coveralls-image]][coveralls-url]
 
 
 Advanced functionality for Promise
@@ -112,3 +113,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [travis-url]: https://travis-ci.org/SuperPaintman/Promisor
 [appveyor-image]: https://img.shields.io/appveyor/ci/SuperPaintman/Promisor/master.svg?label=windows
 [appveyor-url]: https://ci.appveyor.com/project/SuperPaintman/Promisor
+[coveralls-image]: https://img.shields.io/coveralls/SuperPaintman/Promisor/master.svg
+[coveralls-url]: https://coveralls.io/r/SuperPaintman/Promisor?branch=master
