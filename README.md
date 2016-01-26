@@ -2,8 +2,8 @@
 
 [![Linux Build][travis-image]][travis-url]
 [![Windows Build][appveyor-image]][appveyor-url]
-[![NPM version][npm-v-image]][npm-link]
-[![NPM Downloads][npm-dm-image]][npm-link]
+[![NPM version][npm-v-image]][npm-url]
+[![NPM Downloads][npm-dm-image]][npm-url]
 [![Test Coverage][coveralls-image]][coveralls-url]
 
 
@@ -106,7 +106,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[npm-link]: https://www.npmjs.com/package/promisor
+[npm-url]: https://www.npmjs.com/package/promisor
 [npm-v-image]: https://img.shields.io/npm/v/promisor.svg
 [npm-dm-image]: https://img.shields.io/npm/dm/Promisor.svg
 [travis-image]: https://img.shields.io/travis/SuperPaintman/Promisor/master.svg?label=linux
