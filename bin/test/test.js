@@ -11,12 +11,12 @@ var Promisor = require("../promisor");
  * Check delata time
  * @param  {number}  expected
  * @param  {number}  value
- * @param  {number}  [range=10]
+ * @param  {number}  [range=25]
  *
  * @return {boolean}
  */
 function isAbout(expected, value, range) {
-    if (range === void 0) { range = 10; }
+    if (range === void 0) { range = 25; }
     return (expected - range < value && value < expected + range);
 }
 describe("#allSeries", function () {

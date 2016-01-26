@@ -16,11 +16,11 @@ import Promisor = require("../promisor");
  * Check delata time
  * @param  {number}  expected
  * @param  {number}  value
- * @param  {number}  [range=10]
+ * @param  {number}  [range=25]
  * 
  * @return {boolean}
  */
-function isAbout(expected: number, value: number, range = 10): boolean {
+function isAbout(expected: number, value: number, range = 25): boolean {
     return (expected - range < value && value < expected + range);
 }
 

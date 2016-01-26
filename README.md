@@ -17,32 +17,6 @@ npm install promisor --save
 --------------------------------------------------------------------------------
 
 ## API
-### Promisor\#delay
-Returns a promise that will be resolved with value (or undefined) after given ms milliseconds.
-
-**Arguments**
-* **ms** {`Integer`}
-* [**value**=*undefined*] {`Any`}
-
-**Returns**
-* {`Promise`} returns second argument - *value*
-
-**Example**
-
-```js
-// Without value
-Promisor.delay(500)
-    .then(()=> {
-        console.log("passed 500 milliseconds!");
-    });
-
-// And with
-Promisor.delay(500, 42)
-    .then((result)=> {
-        console.log(`after 500 milliseconds returns "${result}"`);
-    });
-```
-
 ### Promisor\#allSeries
 This same as `Promise#all` but runs only a portions async promises at a time.
 
