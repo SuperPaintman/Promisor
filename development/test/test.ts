@@ -7,7 +7,6 @@ import Promise = require("bluebird");
 
 import Promisor = require("../promisor");
 
-// const Promise = global.Promise;
 /**
  * Helps
  */

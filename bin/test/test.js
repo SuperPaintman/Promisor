@@ -4,7 +4,6 @@ var assert = require('assert');
 var _ = require("lodash");
 var Promise = require("bluebird");
 var Promisor = require("../promisor");
-// const Promise = global.Promise;
 /**
  * Helps
  */
