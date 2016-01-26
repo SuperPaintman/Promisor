@@ -9,6 +9,7 @@ import async = require("async");
  * allSeries
  * @param  {Function[]}       values
  * @param  {number}           [limit=1]
+ * @param  {delay}            [limit=0]
  * 
  * @return {Promise}
  */
@@ -36,13 +37,42 @@ function _allSeries(values: Function[], limit = 1, delay = 0): Promise<any> {
         }, (err, results) => {
             if (err) { return reject(err); }
 
-            let all = [];
-            all = _(results)
-                .flatten()
+            const all = _(results)
                 .flatten()
                 .value();
 
             resolve(all);
+        });
+    });
+}
+
+/**
+ * allLimit
+ * @param  {Function[]}       values
+ * @param  {number}           [limit=1]
+ * @param  {delay}            [limit=0]
+ * 
+ * @return {Promise}
+ */
+function _allLimit(values: Function[], limit = 1, delay = 0): Promise<any> {
+    return new Promise((resolve, reject) => {
+        async.mapLimit(values, limit, (fn: Function, callback: Function) => {
+            // Сбор промисов
+            const promise: Promise<any> = fn();
+
+            promise.delay(delay)
+            .then((results) => {
+                callback(null, results);
+            }, (err) => {
+                callback(err);
+            });
+        }, (err, results) => {
+            if (err) { return reject(err); }
+
+            // const all = _(results)
+            //     .value();
+
+            resolve(results);
         });
     });
 }
@@ -52,6 +82,9 @@ class Promisor {
 
     public static allSeries = _allSeries;
     public allSeries = _allSeries;
+
+    public static allLimit = _allLimit;
+    public allLimit = _allLimit;
 }
 
 export = Promisor;
