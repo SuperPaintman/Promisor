@@ -3,63 +3,78 @@
 
 import _ = require("lodash");
 import Promise = require("bluebird");
+import async = require("async");
 
 /**
  * allSeries
  * @param  {Function[]}       values
  * @param  {number}           [limit=1]
+ * @param  {delay}            [limit=0]
  * 
  * @return {Promise}
  */
 function _allSeries(values: Function[], limit = 1, delay = 0): Promise<any> {
-    let all = [];
-
     // Делим функции на чанки
     const chunks: Function[][] = _.chunk<Function>(values, limit);
 
-    // Заводим промис
-    let p: Promise<any>;
-    p = Promise.resolve();
+    return new Promise((resolve, reject) => {
+        async.mapSeries(chunks, (chunk: Function[], callback: Function) => {
+            // Сбор промисов
+            const promises: Promise<any>[] = [];
 
-    // Обход всех чанков
-    _.forEach(chunks, (chunk: Function[]) => {
-        p = p
-            .then(() => {
-                const promises: Promise<any>[] = [];
-
-                _.forEach(chunk, (fn: Function) => {
-                    promises.push(fn());
-                });
-
-                return Promise.all(promises);
-            })
-            // Задержка между сериями
-            .then((results: any[]) => {
-                return delay > 0 ?
-                    Promise.delay(delay, results) : Promise.resolve(results);
-            })
-            .then((results: any[]) => {
-                all.push(results);
-
-                return Promise.resolve();
+            _.forEach(chunk, (fn: Function) => {
+                promises.push(fn());
             });
+
+            // Запуск всех
+            Promise.all(promises)
+                .delay(delay)
+                .then((results) => {
+                    callback(null, results);
+                }, (err) => {
+                    callback(err);
+                });
+        }, (err, results) => {
+            if (err) { return reject(err); }
+
+            const all = _(results)
+                .flatten()
+                .value();
+
+            resolve(all);
+        });
     });
+}
 
-    p = p.then(() => {
+/**
+ * allLimit
+ * @param  {Function[]}       values
+ * @param  {number}           [limit=1]
+ * @param  {delay}            [limit=0]
+ * 
+ * @return {Promise}
+ */
+function _allLimit(values: Function[], limit = 1, delay = 0): Promise<any> {
+    return new Promise((resolve, reject) => {
+        async.mapLimit(values, limit, (fn: Function, callback: Function) => {
+            // Сбор промисов
+            const promise: Promise<any> = fn();
 
-        /**
-         * На момент окончания, резуьтат будет иметь вид:
-         * [][]
-         */
-        all = _(all)
-            .flatten()
-            .flatten()
-            .value();
+            promise.delay(delay)
+            .then((results) => {
+                callback(null, results);
+            }, (err) => {
+                callback(err);
+            });
+        }, (err, results) => {
+            if (err) { return reject(err); }
 
-        return Promise.resolve(all);
+            // const all = _(results)
+            //     .value();
+
+            resolve(results);
+        });
     });
-
-    return p;
 }
 
 class Promisor {
@@ -67,6 +82,9 @@ class Promisor {
 
     public static allSeries = _allSeries;
     public allSeries = _allSeries;
+
+    public static allLimit = _allLimit;
+    public allLimit = _allLimit;
 }
 
 export = Promisor;
