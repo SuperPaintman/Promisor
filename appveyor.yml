@@ -6,9 +6,6 @@ environment:
     - nodejs_version: "3.3"
     - nodejs_version: "4.2"
     - nodejs_version: "5.5"
-branches:
-  only:
-    - master
 install:
   - "npm install -g mocha"
   - "npm install -g typescript"
