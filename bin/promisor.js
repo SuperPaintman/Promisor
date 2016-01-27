@@ -56,8 +56,8 @@ function _allLimit(values, limit, delay) {
     return new Promise(function (resolve, reject) {
         async.mapLimit(values, limit, function (fn, callback) {
             // Сбор промисов
-            var promise = fn();
-            promise.delay(delay)
+            Promise.resolve(fn())
+                .delay(delay)
                 .then(function (results) {
                 callback(null, results);
             }, function (err) {
