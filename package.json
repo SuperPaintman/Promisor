@@ -1,6 +1,6 @@
 {
   "name": "promisor",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Advanced functionality for Promise",
   "main": "bin/promisor.js",
   "author": {
@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "async": "^1.5.2",
-    "bluebird": "^3.1.2",
+    "bluebird": "^3.3.4",
     "lodash": "^4.0.0"
   },
   "repository": {

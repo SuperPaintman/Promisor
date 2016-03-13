@@ -14,14 +14,14 @@
     "assert/assert.d.ts": {
       "commit": "fab683ca77d0286b9d51aba6375deaceb41b22f5"
     },
-    "bluebird/bluebird.d.ts": {
-      "commit": "7fffbd3e040a93c244777e3be04cd6223ac69301"
-    },
     "node/node.d.ts": {
       "commit": "7fffbd3e040a93c244777e3be04cd6223ac69301"
     },
     "async/async.d.ts": {
       "commit": "f29bf726a60674dbf24bab06a26403a3871c3f21"
+    },
+    "bluebird/bluebird.d.ts": {
+      "commit": "d22516f9f089de107d7e7d5938566377370631f6"
     }
   }
 }

@@ -7,10 +7,14 @@
         "removeComments": false,
         "noLib": false,
         "outDir": "./bin/",
-        "sourceMap": false
+        "sourceMap": false,
+        "declaration": true
     },
     "filesGlob": [
-        "./development/**/*.ts",
-        "!./node_modules/**/*.ts"
+        "./development/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "bin"
     ]
 }

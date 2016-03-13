@@ -1,11 +1,11 @@
 'use strict';
 /// <reference path="typings/tds.d.ts"/>
 
-import assert = require('assert');
-import _ = require("lodash");
-import Promise = require("bluebird");
+import * as assert from 'assert';
+import * as _ from 'lodash';
+import * as BBPromise from 'bluebird';
 
-import Promisor = require("../promisor");
+import * as Promisor from '../promisor';
 
 /**
  * Helps
@@ -68,9 +68,9 @@ function getTolalTimeOfAllLimit(
     return time;
 }
 
-describe("test helps", () => {
-    describe("getTolalTimeOfAllLimit()", () => {
-        it("should return time without delay", function() {
+describe('test helps', () => {
+    describe('getTolalTimeOfAllLimit()', () => {
+        it('should return time without delay', function() {
             let needTime;
 
             needTime = getTolalTimeOfAllLimit([
@@ -96,7 +96,7 @@ describe("test helps", () => {
             assert.equal(needTime, 1700);
         });
 
-        it("should return time with delay", function() {
+        it('should return time with delay', function() {
             let needTime;
 
             needTime = getTolalTimeOfAllLimit([
@@ -115,8 +115,8 @@ describe("test helps", () => {
     });
 });
 
-describe("#allSeries", () => {
-    it("should return 9 value by 3 series after 900ms", function() {
+describe('#allSeries', () => {
+    it('should return 9 value by 3 series after 900ms', function() {
         this.timeout(10000);
         this.slow(3000);
 
@@ -126,7 +126,7 @@ describe("#allSeries", () => {
         for (let i = 0, len = 9; i < len; i++) {
             (function(promises, i) {
                 promises.push(function() {
-                    return Promise.delay(300, i);
+                    return BBPromise.delay(300, i);
                 });
             })(promises, i);
         }
@@ -144,7 +144,7 @@ describe("#allSeries", () => {
             });
     });
 
-    it("should return 9 value by 3 series after 1800ms", function() {
+    it('should return 9 value by 3 series after 1800ms', function() {
         this.timeout(10000);
         this.slow(4000);
 
@@ -160,7 +160,7 @@ describe("#allSeries", () => {
                      * 700 | 800 | 900 | max> 900  |
                      */
 
-                    return Promise.delay(100 * (i + 1), i);
+                    return BBPromise.delay(100 * (i + 1), i);
                 });
             })(promises, i);
         }
@@ -178,7 +178,7 @@ describe("#allSeries", () => {
             });
     });
 
-    it("should return 9 value by 3 series and delay by 100 after 2100ms", function() {
+    it('should return 9 value by 3 series and delay by 100 after 2100ms', function() {
         this.timeout(10000);
         this.slow(5000);
 
@@ -194,7 +194,7 @@ describe("#allSeries", () => {
                      * 700 | 800 | 900 | max> 900  |
                      */
 
-                    return Promise.delay(100 * (i + 1), i);
+                    return BBPromise.delay(100 * (i + 1), i);
                 });
             })(promises, i);
         }
@@ -213,8 +213,8 @@ describe("#allSeries", () => {
     });
 });
 
-describe("#allLimit", () => {
-    it("should return 9 value with limit by 3 after 900m", function() {
+describe('#allLimit', () => {
+    it('should return 9 value with limit by 3 after 900m', function() {
         this.timeout(10000);
         this.slow(5000);
 
@@ -227,7 +227,7 @@ describe("#allLimit", () => {
                 promisesTime.push(300);
 
                 promises.push(function() {
-                    return Promise.delay(300, i);
+                    return BBPromise.delay(300, i);
                 });
             })(promises, i);
         }
@@ -246,21 +246,21 @@ describe("#allLimit", () => {
             });
     });
 
-    it("should return 9 value with limit by 3 after 1700m", function() {
+    it('should return 9 value with limit by 3 after 1700m', function() {
         this.timeout(10000);
         this.slow(5000);
 
         // Массив под промисы
         const promises = [
-            function() { return Promise.delay(100, 0); },
-            function() { return Promise.delay(300, 1); },
-            function() { return Promise.delay(200, 2); },
-            function() { return Promise.delay(500, 3); },
-            function() { return Promise.delay(700, 4); },
-            function() { return Promise.delay(200, 5); },
-            function() { return Promise.delay(300, 6); },
-            function() { return Promise.delay(400, 7); },
-            function() { return Promise.delay(900, 8); }
+            function() { return BBPromise.delay(100, 0); },
+            function() { return BBPromise.delay(300, 1); },
+            function() { return BBPromise.delay(200, 2); },
+            function() { return BBPromise.delay(500, 3); },
+            function() { return BBPromise.delay(700, 4); },
+            function() { return BBPromise.delay(200, 5); },
+            function() { return BBPromise.delay(300, 6); },
+            function() { return BBPromise.delay(400, 7); },
+            function() { return BBPromise.delay(900, 8); }
         ];
 
         const promisesTime = [
@@ -289,21 +289,21 @@ describe("#allLimit", () => {
             });
     });
 
-    it("should return 9 value with limit by 3 and delay by 100 after 2100m", function() {
+    it('should return 9 value with limit by 3 and delay by 100 after 2100m', function() {
         this.timeout(10000);
         this.slow(5000);
 
         // Массив под промисы
         const promises = [
-            function() { return Promise.delay(100, 0); },
-            function() { return Promise.delay(300, 1); },
-            function() { return Promise.delay(200, 2); },
-            function() { return Promise.delay(500, 3); },
-            function() { return Promise.delay(700, 4); },
-            function() { return Promise.delay(200, 5); },
-            function() { return Promise.delay(300, 6); },
-            function() { return Promise.delay(400, 7); },
-            function() { return Promise.delay(900, 8); }
+            function() { return BBPromise.delay(100, 0); },
+            function() { return BBPromise.delay(300, 1); },
+            function() { return BBPromise.delay(200, 2); },
+            function() { return BBPromise.delay(500, 3); },
+            function() { return BBPromise.delay(700, 4); },
+            function() { return BBPromise.delay(200, 5); },
+            function() { return BBPromise.delay(300, 6); },
+            function() { return BBPromise.delay(400, 7); },
+            function() { return BBPromise.delay(900, 8); }
         ];
 
         const promisesTime = [

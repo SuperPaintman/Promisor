@@ -124,6 +124,12 @@ Promisor.allLimit(promises, 2) // By 2
 --------------------------------------------------------------------------------
 
 ## Changelog
+### 0.4.0 [`Unstable`]
+```diff
++ Added: generation TSD typings
++ Changed: exports functions. Now the module exports alone function in ES6 style
+```
+
 ### 0.3.0 [`Unstable`]
 ```diff
 + Added: dependence on Async

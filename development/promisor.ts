@@ -1,9 +1,9 @@
 'use strict';
 /// <reference path="typings/tds.d.ts"/>
 
-import _ = require("lodash");
-import Promise = require("bluebird");
-import async = require("async");
+import * as _ from 'lodash';
+import * as BBPromise from 'bluebird';
+import * as async from 'async';
 
 /**
  * allSeries
@@ -13,7 +13,7 @@ import async = require("async");
  * 
  * @return {Promise}
  */
-function _allSeries(values: Function[], limit = 1, delay = 0): Promise<any> {
+export function allSeries(values: Function[], limit = 1, delay = 0): Promise<any> {
     // Делим функции на чанки
     const chunks: Function[][] = _.chunk<Function>(values, limit);
 
@@ -27,7 +27,7 @@ function _allSeries(values: Function[], limit = 1, delay = 0): Promise<any> {
             });
 
             // Запуск всех
-            Promise.all(promises)
+            BBPromise.all(promises)
                 .delay(delay)
                 .then((results) => {
                     callback(null, results);
@@ -54,11 +54,11 @@ function _allSeries(values: Function[], limit = 1, delay = 0): Promise<any> {
  * 
  * @return {Promise}
  */
-function _allLimit(values: Function[], limit = 1, delay = 0): Promise<any> {
+export function allLimit(values: Function[], limit = 1, delay = 0): Promise<any> {
     return new Promise((resolve, reject) => {
         async.mapLimit(values, limit, (fn: Function, callback: Function) => {
             // Сбор промисов
-            Promise.resolve(fn())
+            BBPromise.resolve(fn())
             .delay(delay)
             .then((results) => {
                 callback(null, results);
@@ -75,15 +75,3 @@ function _allLimit(values: Function[], limit = 1, delay = 0): Promise<any> {
         });
     });
 }
-
-class Promisor {
-    constructor() { }
-
-    public static allSeries = _allSeries;
-    public allSeries = _allSeries;
-
-    public static allLimit = _allLimit;
-    public allLimit = _allLimit;
-}
-
-export = Promisor;

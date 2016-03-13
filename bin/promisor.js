@@ -1,8 +1,8 @@
 'use strict';
 /// <reference path="typings/tds.d.ts"/>
-var _ = require("lodash");
-var Promise = require("bluebird");
-var async = require("async");
+var _ = require('lodash');
+var BBPromise = require('bluebird');
+var async = require('async');
 /**
  * allSeries
  * @param  {Function[]}       values
@@ -11,7 +11,7 @@ var async = require("async");
  *
  * @return {Promise}
  */
-function _allSeries(values, limit, delay) {
+function allSeries(values, limit, delay) {
     if (limit === void 0) { limit = 1; }
     if (delay === void 0) { delay = 0; }
     // Делим функции на чанки
@@ -24,7 +24,7 @@ function _allSeries(values, limit, delay) {
                 promises.push(fn());
             });
             // Запуск всех
-            Promise.all(promises)
+            BBPromise.all(promises)
                 .delay(delay)
                 .then(function (results) {
                 callback(null, results);
@@ -42,6 +42,7 @@ function _allSeries(values, limit, delay) {
         });
     });
 }
+exports.allSeries = allSeries;
 /**
  * allLimit
  * @param  {Function[]}       values
@@ -50,13 +51,13 @@ function _allSeries(values, limit, delay) {
  *
  * @return {Promise}
  */
-function _allLimit(values, limit, delay) {
+function allLimit(values, limit, delay) {
     if (limit === void 0) { limit = 1; }
     if (delay === void 0) { delay = 0; }
     return new Promise(function (resolve, reject) {
         async.mapLimit(values, limit, function (fn, callback) {
             // Сбор промисов
-            Promise.resolve(fn())
+            BBPromise.resolve(fn())
                 .delay(delay)
                 .then(function (results) {
                 callback(null, results);
@@ -73,13 +74,4 @@ function _allLimit(values, limit, delay) {
         });
     });
 }
-var Promisor = (function () {
-    function Promisor() {
-        this.allSeries = _allSeries;
-        this.allLimit = _allLimit;
-    }
-    Promisor.allSeries = _allSeries;
-    Promisor.allLimit = _allLimit;
-    return Promisor;
-})();
-module.exports = Promisor;
+exports.allLimit = allLimit;
